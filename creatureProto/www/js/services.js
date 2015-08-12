@@ -34,6 +34,9 @@ angular.module('starter.services', [])
     },
     addFood: function(foodItem) {
       food.push(foodItem)
+    },
+    removeFood: function() {
+      food.pop()
     }
   };
 })

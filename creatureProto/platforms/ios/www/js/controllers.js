@@ -11,6 +11,7 @@ angular.module('starter.controllers', ['ngDraggable', 'firebase', 'ngCordova'])
   $scope.onDropComplete = function(){
     console.log("Omnomnomnom!");
     $scope.myVar = true;
+    Images.removeFood();
     setTimeout(function ()
     {
       $scope.$apply(function()
