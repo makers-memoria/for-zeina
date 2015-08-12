@@ -23,6 +23,22 @@ angular.module('starter.services', [])
 
 
   // Some fake testing data
+  var food = [];
+
+  return {
+    // pet: function() {
+    //   return creatures;
+    // },
+    foodList: function() {
+      return food;
+    },
+    addFood: function(foodItem) {
+      food.push(foodItem)
+    }
+  };
+})
+
+.factory('populateFood', function(){
   var food = [{
     id: 0,
     name: 'Sandwich',
@@ -31,21 +47,34 @@ angular.module('starter.services', [])
     id: 1,
     name: 'Rice',
     location: './img/fried_rice__x1_iconic_png_1354829839.png'
-  }];
+  }, {
+    id: 2,
+    name: 'Taco',
+    location: './img/cold_taco.png'
+  }
+    ];
 
-  return {
-    // pet: function() {
-    //   return creatures;
-    // },
-    foodList: function() {
-      return food;
+    return {
+      randomFood: function() {
+        return food[Math.floor(Math.random() * food.length)]
+      }
     }
-  };
 })
 
 .factory('QuestionFactory', ['$firebaseArray', function($firebaseArray) {
   var itemRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
   return $firebaseArray(itemRef);
+}])
+
+.factory('listFactory', ['$firebaseArray', function($firebaseArray) {
+  var itemRef =  new Firebase('https://studymemoria.firebaseio.com/MyStudies');
+  var list = $firebaseArray(itemRef);
+  return {
+    myList: function() {
+      return list;
+    }
+  };
+
 }]);
 
 
@@ -70,6 +99,3 @@ angular.module('starter.services', [])
 //         }
 //     });
 // });
-
-
-
